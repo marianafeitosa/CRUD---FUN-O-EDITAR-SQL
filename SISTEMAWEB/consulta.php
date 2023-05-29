@@ -78,6 +78,7 @@
                             echo "<td>" . $registro['dataContato'] . "</td>";
                             echo "<td>" . $registro['observacao'] . "</td>";
                             echo "<td><a href='editar.php?id=" . $registro['id'] . "' class='btn btn-primary'>Editar</a></td>";
+                            echo "<td><a href='excluir.php?id=" . $registro['id'] . "' class='btn btn-primary'>Excluir</a></td>";
                             echo "</tr>";
                         }
                         ?>
