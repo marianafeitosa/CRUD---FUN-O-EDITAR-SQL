@@ -10,16 +10,16 @@ try {
     echo "Erro ao tentar fazer a conexão com o MySQL: " . $ex->getMessage();
 }
 
-// Verifica se foi enviado o ID do registro a ser editado
+
 if (isset($_GET['id'])) {
     $id = (int)$_GET['id'];
 
-    // Obtém os dados do registro a ser editado
+    
     $sql = "SELECT * FROM dadoscliente WHERE id = $id";
     $stmt = $pdo->query($sql);
     $registro = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Verifica se o registro existe
+    
     if (!$registro) {
         echo "Registro não encontrado.";
         exit;
@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
     exit;
 }
 
-// Verifica se o formulário foi submetido
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtém os novos valores dos campos
     $nome = $_POST['nome'] ?? "";
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dataContato = $_POST['dataContato'] ?? "";
     $observacao = $_POST['observacao'] ?? "";
 
-    // Atualiza os dados no banco de dados
+    
     $sqlUpdate = "UPDATE dadoscliente SET nome = :nome, telefone = :telefone, origem = :origem, dataContato = :dataContato, observacao = :observacao WHERE id = :id";
     $stmtUpdate = $pdo->prepare($sqlUpdate);
     $stmtUpdate->bindValue(':nome', $nome);
